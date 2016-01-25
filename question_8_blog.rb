@@ -44,7 +44,7 @@ module Blog
 
     def initialize(title, body)
       super
-      p set_body(body)
+      set_body(body)
     end
 
     def set_body(body)
