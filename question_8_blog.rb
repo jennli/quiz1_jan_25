@@ -24,7 +24,8 @@ end
 module Blog
 
   class Article
-    attr_accessor :title, :body
+    attr_accessor :title
+    attr_reader :body
     include HelperMethods
 
     def initialize(title, body)
@@ -32,17 +33,24 @@ module Blog
       @body = body
     end
 
+    def set_body(body)
+      @body = body
+    end
+
   end
 
   class Snippet < Article
+    #Because i don't want to user to be able to change the body without checking the length, i'm restricting the attr_accesor to attr_reader for the body attribute, and changing body has to use set_body
 
     def initialize(title, body)
       super
+      p set_body(body)
+    end
 
+    def set_body(body)
       if body.length > 100
         @body = body[0...100] + "..."
       end
-
     end
 
   end
